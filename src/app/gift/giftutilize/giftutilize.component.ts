@@ -16,7 +16,7 @@ export class GiftutilizeComponent implements OnInit {
   giftsData = [];
   showLoading = false;
   private formatJSONData(res) {
-    const body = res;
+    const body = res.data[0];
     if (body) {
       return body
     } else {
@@ -29,7 +29,7 @@ export class GiftutilizeComponent implements OnInit {
     lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
     ajax: (data, callback, settings) => {
 
-      this.http.get('http://3.108.79.136:3000/gifts')
+      this.http.get('http://3.108.79.136:3000/api/v1/gift/gift-utilization/acb7f015-8b55-42ac-9ea9-915144dd5142')
         .pipe(
           map((this.formatJSONData))
         ).subscribe((jsondata) => {

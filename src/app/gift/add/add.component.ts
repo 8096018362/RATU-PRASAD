@@ -104,32 +104,34 @@ export class AddComponent implements OnInit, OnDestroy {
     this.formValidate = true;
 
     if (this.form.valid) {
-      console.log(this.form.value)
-      console.log(this.icon)
-      console.log(this.gif_img)
+      // console.log(this.form.value)
+      // console.log(this.icon)
+      // console.log(this.gif_img)
       this.showError = false;
       this.showLoading = true;
       const data = this.form.getRawValue();
-      
+
       const request = {
+        added_by: JSON.parse(sessionStorage.getItem('loginObj')).userid,
+        conversion_rate: data.conversion_rate,
+        gif_img: this.gif_img,
+        icon: this.icon,
         name: data.name,
+        remarks: data.remarks,
+
         value: data.value,
         status: data.status,
         type: data.type,
-        added_by: JSON.parse(sessionStorage.getItem('loginObj')).userid,
-        conversion_rate: data.conversion_rate,
-        remarks: data.remarks,
+     
+      
         //icon: 'https://firebasestorage.googleapis.com/v0/b/ratustaging.appspot.com/o/rn_image_picker_lib_temp_7d81fdf4-f5ed-47d3-bc22-9caec56a6755.jpg?alt=media&token=2c720c27-0b97-424c-8905-04faa9184437',
         //gif_img: 'https://firebasestorage.googleapis.com/v0/b/ratustaging.appspot.com/o/rn_image_picker_lib_temp_7d81fdf4-f5ed-47d3-bc22-9caec56a6755.jpg?alt=media&token=2c720c27-0b97-424c-8905-04faa9184437'
-        gif_img: this.gif_img,
-        icon: this.icon
+       
       };
-
-
 
       this.api.saveGift(request).pipe(takeWhile(() => this.componentActive)).subscribe(response => {
         this.showLoading = false;
-        if (response.gift == 'gift created Successfully') {
+        if (response.success) {
           swal("Successful!", "Gift information saved!", "success").then((result) => {
             if (result) {
               const link = ['/gift/view'];

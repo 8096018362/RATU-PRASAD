@@ -82,7 +82,7 @@ export class ApiService {
         'x-access-token': sessionStorage.getItem('userToken')
       })
     };
-    return this.http.post(API_URL + '/gifts/add', request, httpOptions);
+    return this.http.post(API_URL + '/api/v1/gift/add-gift', request, httpOptions);
   }
 
 

@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
     giftsData = [];
     showLoading = false;
     private formatJSONData(res) {
-        const body = res;
+        const body = res.data[0];
         if (body) {
             return body
         } else {
@@ -38,7 +38,7 @@ export class ListComponent implements OnInit {
                     'x-access-token': sessionStorage.getItem('userToken')
                 })
             };
-            this.http.get(environment.API_URL + '/gifts', httpOptions)
+            this.http.get(environment.API_URL + '/api/v1/gift/gift-list', httpOptions)
                 .pipe(
                     map((this.formatJSONData))
                 ).subscribe((jsondata) => {
@@ -53,15 +53,29 @@ export class ListComponent implements OnInit {
             },
             {
                 title: 'Gift Utilization',
-                data: 'added_by'
+                data: ''
             },
             {
                 title: 'Crown Value',
-                data: 'value'
+                data: 'value',
+                render: (data, row, index) => {
+                    if (data != null) {
+                        return data;
+                    } else {
+                        return '-'
+                    }
+                }
             },
             {
                 title: 'Conversion Rate',
-                data: 'conversion_rate'
+                data: 'conversion_rate',
+                render: (data, row, index) => {
+                    if (data != null) {
+                        return data;
+                    } else {
+                        return '-'
+                    }
+                }
             },
             {
                 title: 'ICON',
@@ -76,7 +90,7 @@ export class ListComponent implements OnInit {
             },
             {
                 title: 'IMAGE',
-                data: 'gif_img',
+                data: 'gf_img',
                 render: (data, row, index) => {
                     if (data != null) {
                         return '<div class="media"><img class="rounded-circle" style="width:40px;" src="' + data + '" /></a> </div>';
@@ -153,21 +167,21 @@ export class ListComponent implements OnInit {
 
         },
         buttons: [
-            { extend: 'colvis', text: 'More Columns', className: 'moreColumns', },
+           // { extend: 'colvis', text: 'More Columns', className: 'moreColumns', },
         ],
-        columnDefs: [
+        // columnDefs: [
 
-            {
-                "targets": [7],
-                "visible": false,
-                "searchable": true
-            },
-            {
-                "targets": [6],
-                "visible": false,
-                "searchable": true
-            }
-        ],
+        //     {
+        //         "targets": [7],
+        //         "visible": false,
+        //         "searchable": true
+        //     },
+        //     {
+        //         "targets": [6],
+        //         "visible": false,
+        //         "searchable": true
+        //     }
+        // ],
 
     };
 
