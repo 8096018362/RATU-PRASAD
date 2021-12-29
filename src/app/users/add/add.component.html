@@ -1,0 +1,189 @@
+<div class="row">
+    <div class="col-xl-12 col-sm-12">
+
+        <app-card [hidHeader]="true" [isCardFooter]="true">
+            <br>
+            <form [formGroup]="addUserForm" >
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="cus-label">
+                                <span>Username</span>
+                            </div>
+                            <input type="text" placeholder="" class="form-control" readonly formControlName="username">
+
+                            <div class="error-msg" *ngIf="!addUserForm.get('username').valid  && formValidate">
+                                <span *ngIf="addUserForm.get('username').errors['required']">Please enter
+                                    Username</span>
+                                <!-- <span class=" icon-color-bad "
+                                    *ngIf="addUserForm.get('username').errors['maxlength']">Please
+                                    enter valid username with 30 letters only</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="cus-label">
+                                <span>Select User Type</span>
+                            </div>
+                            <select class="form-control" formControlName="usertype">
+                                <option *ngFor="let user of userTypeList" [ngValue]="user.id">{{user.name}}</option>
+                            </select>
+                            <div class="error-msg" *ngIf="!addUserForm.get('usertype').valid  && formValidate">
+                                <span *ngIf="addUserForm.get('usertype').errors['required']">Please select
+                                    User Type</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="cus-label">
+                                <span>Phone Number</span>
+                            </div>
+                            <!-- <input type="text" placeholder="" class="form-control" formControlName="phoneNumber"> -->
+                            <ngx-intl-tel-input [cssClass]="'custom form-control w-100'" readonly
+                                [preferredCountries]="preferredCountries" [enableAutoCountrySelect]="true"
+                                [enablePlaceholder]="true" [searchCountryFlag]="true"
+                                [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                                [selectFirstCountry]="false" [selectedCountryISO]="CountryISO.India" [maxLength]="15"
+                                [phoneValidation]="true" [separateDialCode]="separateDialCode" name="phone"
+                                formControlName="phoneNumber">
+                            </ngx-intl-tel-input>
+                            <div class="error-msg" *ngIf="!addUserForm.get('phoneNumber').valid  && formValidate">
+                                <span *ngIf="addUserForm.get('phoneNumber').errors['required']">Please enter phone
+                                    number</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="cus-label">
+                                <span>Email</span>
+                            </div>
+                            <input type="text" placeholder="" readonly class="form-control" formControlName="email">
+                            <div class="error-msg" *ngIf="!addUserForm.get('email').valid  && formValidate">
+                                <span *ngIf="addUserForm.get('email').errors['required']">Please enter email</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="cus-label">
+                                <span>User Id</span>
+                            </div>
+                            <input type="text" placeholder="" class="form-control" formControlName="userid">
+                            <div class="error-msg" *ngIf="!addUserForm.get('userid').valid  && formValidate">
+                                <span *ngIf="addUserForm.get('userid').errors['required']">Please enter user id</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="cus-label">
+                                <span>Select Country</span>
+                            </div>
+                            <select class="form-control" readonly formControlName="country" (change)="onCountryChange()">
+                                <option [ngValue]='null'>Please Select Country</option>
+                                <option *ngFor="let country of countriesList" [ngValue]="country.code">
+                                    {{country.name}}
+                                </option>
+                            </select>
+                            <div class="error-msg" *ngIf="!addUserForm.get('country').valid  && formValidate">
+                                <span *ngIf="addUserForm.get('country').errors['required']">Please enter Country</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="cus-label">
+                                <span>Select City</span>
+                            </div>
+                            <select class="form-control" readonly formControlName="city">
+                                <option [ngValue]='null'>Please Select City</option>
+                                <option *ngFor="let city of cityList" [ngValue]="city">{{city}}
+                                </option>
+                            </select>
+                            <div class="error-msg" *ngIf="!addUserForm.get('city').valid  && formValidate">
+                                <span *ngIf="addUserForm.get('city').errors['required']">Please enter City</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="cus-label">
+                                <span>Password</span>
+                            </div>
+                            <input type="password" placeholder="" class="form-control" formControlName="password">
+                            <div class="error-msg" *ngIf="!addUserForm.get('password').valid  && formValidate">
+                                <span *ngIf="addUserForm.get('password').errors['required']">Please enter
+                                    Password</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="cus-label">
+                                <span>Confirm Password</span>
+                            </div>
+
+                            <input type="password" placeholder="" class="form-control"
+                                formControlName="confirmPassword">
+                            <div class="error-msg"
+                                *ngIf="addUserForm.value.confirmPassword && addUserForm.value.password != addUserForm.value.confirmPassword">
+                                <span>Passwords didn't match</span>
+                            </div>
+                            <div class="error-msg" *ngIf="!addUserForm.get('confirmPassword').valid  && formValidate">
+                                <span *ngIf="addUserForm.get('confirmPassword').errors['required']">Please enter
+                                    Password</span>
+
+                                <span
+                                    *ngIf="addUserForm.get('confirmPassword').value&&addUserForm.get('confirmPassword').value!==addUserForm.get('password').value">Password
+                                    miss match</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+             
+            </form>
+
+            <div class="col-sm-12">
+                <div class="form-group text-center">
+                    <button type="button" class="btn btn-danger" (click)="clearForm()">Clear</button> &nbsp;
+                    <button class="btn btn-primary" (click)="addUser()" type="button">Submit</button>
+                </div>
+            </div>
+
+        </app-card>
+
+    </div>
+</div>
+
+<!-- // username
+// usertype
+// phoneNumber
+// email
+// country
+// password
+// confirmPassword -->
+
+<!-- 
+<div class="form-group">
+    <label for="skucode"><b>SKU Code </b></label>
+    <input type="text" class="form-control" placeholder="SKU Code"
+        (change)="skuDetails()" formControlName="skucode" id="skucode"
+        [(ngModel)]="skuObj.skuCode">
+
+    <span *ngIf="!addUserForm.get('skucode').valid  && formValidate">
+        <span class=" icon-color-bad "
+            *ngIf="addUserForm.get('skucode').errors['required']">Please
+            enter SKU code</span>
+        <span class=" icon-color-bad "
+            *ngIf="addUserForm.get('skucode').errors['maxlength']">Please
+            enter valid SKU Code with 30 letters only</span>
+    </span>
+</div> -->

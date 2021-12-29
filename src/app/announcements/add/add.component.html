@@ -1,0 +1,107 @@
+<div class="row py-3">
+    <div class="col-xl-12 col-sm-12">
+        <div class="row py-3 mt-3 mb-3">
+            <div class="col-sm-6 cus-stle">
+                <h4>{{ this.api.announcementId ? 'Update' : 'Add' }} Announcement</h4>
+            </div>
+            <div class="col-sm-6 text-right">
+                <div class="addBtn mr-auto">
+                    <!-- <div class="addBtn mr-auto" (click)="addUser()"></div> -->
+                    <button type="button" class="btn btn-primary d-none">
+                        Announcement List
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row my-3" *ngIf="form">
+            <div class="col-xl-6 col-sm-6">
+                <div *ngIf="showError" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Form inavlid!</strong> Please fill in all the required fields.
+                </div>
+            </div>
+            <div class="col-xl-12 col-sm-12">
+                <app-card [hidHeader]="true" [isCardFooter]="true">
+                    <br>
+                    <div class="row" [formGroup]="form">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="cus-label">
+                                    <span>Category</span>
+                                </div>
+                                <input type="text" placeholder="" formControlName="category" class="form-control"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="cus-label">
+                                    <span>Subject</span>
+                                </div>
+                                <input type="text" placeholder="" formControlName="subject" class="form-control"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="cus-label">
+                                    <span>type</span>
+                                </div>
+                                <input type="text" placeholder="" formControlName="type" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="custom-file form-group">
+                                <div class="cus-label">
+                                    <span>Image</span>
+                                </div>
+                                <input type="file" name="file" id="file" (change)="onFileChanged($event, 'I')"
+                                    accept=".png, .jpg, .jpeg" class="custom-file-input" required>
+                                <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="cus-label">
+                                    <span>Duration</span>
+                                </div>
+                                <input type="text" placeholder="" formControlName="type" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="cus-label">
+                                    <span>Status</span>
+                                </div>
+                                <select class="form-control" name="validation-cmbGear" formControlName="status"
+                                    required>
+                                    <option [value]="status.value" *ngFor="let status of statusList">{{status.text}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="cus-label">
+                                    <span>Description</span>
+                                </div>
+                                <textarea class="form-control" formControlName="description" id="desc" rows="3"
+                                    required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group text-center">
+                            <button type="button" class="btn btn-danger">Clear</button> &nbsp;
+                            <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+                        </div>
+                    </div>
+
+                </app-card>
+
+            </div>
+        </div>
+    </div>
+</div>
+<app-loader *ngIf="showLoading"></app-loader>

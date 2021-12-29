@@ -1,0 +1,62 @@
+<app-card [hidHeader]="true" [isCardFooter]="true">
+    <br>
+    <div class="row" *ngIf="bonusForm">
+        <div class="col-sm-3" [formGroup]="bonusForm">
+            <div class="form-group">
+                <div class="cus-label">
+                    <span>Day 1</span>
+                </div>
+                <input type="text" formControlName="day_1" placeholder="" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <div class="cus-label">
+                    <span>Day 2</span>
+                </div>
+                <input type="text" formControlName="day_2" placeholder="" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <div class="cus-label">
+                    <span>Day 3</span>
+                </div>
+                <input type="text" formControlName="day_3" placeholder="" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <div class="cus-label">
+                    <span>Day 4</span>
+                </div>
+                <input type="text" formControlName="day_4" placeholder="" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <div class="cus-label">
+                    <span>Day 5</span>
+                </div>
+                <input type="text" formControlName="day_5" placeholder="" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <div class="cus-label">
+                    <span>Day 6</span>
+                </div>
+                <input type="text" formControlName="day_6" placeholder="" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <div class="cus-label">
+                    <span>Day 7</span>
+                </div>
+                <input type="text" formControlName="day_7" placeholder="" class="form-control">
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group">
+            <button type="button" class="btn btn-danger">Reset</button> &nbsp;
+            <button type="button" class="btn btn-primary" (click)="save()">Submit</button>
+        </div>
+    </div>
+    <app-loader *ngIf="showLoading"></app-loader>
+</app-card>

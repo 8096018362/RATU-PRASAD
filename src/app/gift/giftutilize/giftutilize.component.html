@@ -1,0 +1,185 @@
+<div class="row py-3">
+    <div class="col-md-12 py-3 mt-3 mb-3"></div>
+    <div class="col-md-12 table-responsive">
+        <table datatable [dtOptions]="utilizationTableOptions" class="table table-striped table-bordered table-hover">
+        </table>
+    </div>
+</div>
+
+
+
+<!-- <link href="assets/plugins/bootstrap-datetimepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet"> -->
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+ -->
+
+<!-- 
+<div class="row my-3">
+
+    <div class="col-12">
+        <div class="card table-card latest-activity-card">
+            <div class="row mt-3 pt-3">
+                <div class="col-12 col-md-6 col-lg-4 mx-3">
+                    <div class="form-group mb-0">
+                        <div class="cus-label mb-2">
+                            <span>Date filter</span>
+                        </div>
+                        <input type="text" name="datefilter" value class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-header">
+                <h5>Utilization</h5>
+                <div class="card-header-right">
+                    <div class="btn-group card-option">
+                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <i class="feather icon-more-horizontal"></i>
+                        </button>
+                        <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+                            <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i>
+                                        maximize</span><span style="display:none"><i class="feather icon-minimize"></i>
+                                        Restore</span></a></li>
+                            <li class="dropdown-item minimize-card"><a href="#!"><span><i
+                                            class="feather icon-minus"></i> collapse</span><span style="display:none"><i
+                                            class="feather icon-plus"></i> expand</span></a></li>
+                            <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i>
+                                    reload</a></li>
+                            <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i>
+                                    remove</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-borderless">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Name</th>
+                                <th>Utilization (Crowns)</th>
+                                <th>Image</th>
+                                <th>Utilization in Pearls</th>
+                                <th>Single</th>
+                                <th>Multiple</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>17-2-2017</td>
+                                <td>Champagne</td>
+                                <td>15000</td>
+                                <td><img src="assets/images/gifts/Champagne.png" alt class="img-fluid"
+                                        style="max-width: 50px;"></td>
+                                <td>2500000</td>
+                                <td>500</td>
+                                <td>650</td>
+                                <td><label class="badge badge-light-success">Active</label></td>
+
+                            </tr>
+                            <tr>
+                                <td>17-2-2017</td>
+                                <td>Cherry</td>
+                                <td>15000</td>
+                                <td><img src="assets/images/gifts/Cherry.png" alt class="img-fluid"
+                                        style="max-width: 50px;"></td>
+                                <td>2500000</td>
+                                <td>500</td>
+                                <td>650</td>
+                                <td><label class="badge badge-light-success">Active</label></td>
+
+                            </tr>
+                            <tr>
+                                <td>17-2-2017</td>
+                                <td>Diamond Ear rings</td>
+                                <td>15000</td>
+                                <td><img src="assets/images/gifts/Diamond Ear rings.png" alt class="img-fluid"
+                                        style="max-width: 50px;"></td>
+                                <td>2500000</td>
+                                <td>500</td>
+                                <td>650</td>
+                                <td><label class="badge badge-light-success">Active</label></td>
+
+                            </tr>
+                            <tr>
+                                <td>17-2-2017</td>
+                                <td>Diamond Neckless</td>
+                                <td>15000</td>
+                                <td><img src="assets/images/gifts/Diamond Neckless.png" alt class="img-fluid"
+                                        style="max-width: 50px;"></td>
+                                <td>2500000</td>
+                                <td>500</td>
+                                <td>650</td>
+                                <td><label class="badge badge-light-success">Active</label></td>
+
+                            </tr>
+                            <tr>
+                                <td>17-2-2017</td>
+                                <td>Diamond Ring</td>
+                                <td>15000</td>
+                                <td><img src="assets/images/gifts/Diamond Ring.png" alt class="img-fluid"
+                                        style="max-width: 50px;"></td>
+                                <td>2500000</td>
+                                <td>500</td>
+                                <td>650</td>
+                                <td><label class="badge badge-light-success">Active</label></td>
+
+                            </tr>
+                            <tr>
+                                <td>17-2-2017</td>
+                                <td>Dolphin</td>
+                                <td>15000</td>
+                                <td><img src="assets/images/gifts/Dolphin.png" alt class="img-fluid"
+                                        style="max-width: 50px;"></td>
+                                <td>2500000</td>
+                                <td>500</td>
+                                <td>650</td>
+                                <td><label class="badge badge-light-success">Active</label></td>
+
+                            </tr>
+                            <tr>
+                                <td>17-2-2017</td>
+                                <td>Dress</td>
+                                <td>15000</td>
+                                <td><img src="assets/images/gifts/Dress.png" alt class="img-fluid"
+                                        style="max-width: 50px;"></td>
+                                <td>2500000</td>
+                                <td>500</td>
+                                <td>650</td>
+                                <td><label class="badge badge-light-success">Active</label></td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ <script src="assets/js/plugins/moment.min.js"></script>
+<script src="assets/js/plugins/daterangepicker.js"></script> 
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script>
+    $(window).ready(function () {
+        $(function () {
+            $('input[name="datefilter"]').daterangepicker({
+                autoUpdateInput: false,
+                locale: {
+                    cancelLabel: 'Clear'
+                }
+            });
+
+            $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+            });
+
+            $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
+                $(this).val('');
+            });
+        });
+    });
+</script> -->

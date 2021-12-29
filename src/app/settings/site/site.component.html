@@ -1,0 +1,90 @@
+<div class="row">
+    <div class="col-sm-12">
+
+
+        <!-- <button (click)="setTitle('new title')" class="btn btn-primary btn-sm btn-round"> Change Title</button><br><br>
+        <button (click)="changeFav()" class="btn btn-success btn-sm btn-round"> Change favicon</button> -->
+
+        <div class="fields">
+            <form [formGroup]="siteForm" (ngSubmit)="doSiteChanges()">
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <div class="cus-label">
+                                <span>Site Name</span>
+                            </div>
+                            <input type="text" placeholder="" class="form-control" formControlName="siteName">
+                            <div class="validation-errors text-left">
+                                <ng-container *ngFor="let validation of validation_messages.siteName">
+                                    <div
+                                        *ngIf="siteForm.get('siteName').hasError(validation.type) && (siteForm.get('siteName').dirty || siteForm.get('siteName').touched)">
+                                        {{ validation.message }}
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <div class="cus-label">
+                                <span>Frontend URL</span>
+                            </div>
+                            <input type="text" placeholder="" class="form-control" formControlName="frontEndUrl">
+                            <div class="validation-errors text-left">
+                                <ng-container *ngFor="let validation of validation_messages.frontEndUrl">
+                                    <div
+                                        *ngIf="siteForm.get('frontEndUrl').hasError(validation.type) && (siteForm.get('frontEndUrl').dirty || siteForm.get('frontEndUrl').touched)">
+                                        {{ validation.message }}
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group fill">
+                            <div class="custom-label">Site Logo</div>
+                            <img src="assets/images/default-user.png" class="b-r-50 w-60">
+                            <input type="file" class="form-control custom" id="Icon" placeholder="sdf"
+                                formControlName="siteLogo">
+                            <small class="form-text text-muted">Please Upload .png images only.</small>
+                            <div class="validation-errors text-left">
+                                <ng-container *ngFor="let validation of validation_messages.siteLogo">
+                                    <div
+                                        *ngIf="siteForm.get('siteLogo').hasError(validation.type) && (siteForm.get('siteLogo').dirty || siteForm.get('siteLogo').touched)">
+                                        {{ validation.message }}
+                                    </div>
+                                </ng-container>
+                            </div>
+    
+                        </div>
+                       
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group fill">
+                            <div class="custom-label">Site Icon</div>
+                            <img src="assets/images/default-user.png" class="b-r-50 w-60">
+                            <input type="file" class="form-control custom" id="Icon" placeholder="sdf"
+                                formControlName="siteIcon" s>
+                            <small class="form-text text-muted">Please Upload .png images only.</small>
+                            <div class="validation-errors text-left">
+                                <ng-container *ngFor="let validation of validation_messages.siteIcon">
+                                    <div
+                                        *ngIf="siteForm.get('siteIcon').hasError(validation.type) && (siteForm.get('siteIcon').dirty || siteForm.get('siteIcon').touched)">
+                                        {{ validation.message }}
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group text-center">
+                            <button type="button" class="btn btn-primary " type="submit">&nbsp;&nbsp;Submit&nbsp;&nbsp;</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

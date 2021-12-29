@@ -1,0 +1,21 @@
+<div class="row py-3">
+    <div class="col-md-12 py-3 mt-3 mb-3"></div>
+    <div class="col-xl-12 col-sm-12">
+        <!-- <div class="row">
+            <div class="col-md-12 button_bar">
+                <button mat-raised-button (click)="approveModal()">Approve</button>
+                <button mat-raised-button (click)="rejectModal()">Reject</button>
+                <button mat-raised-button (click)="queryModal()">Query</button>
+            </div>
+        </div> -->
+        <div class="row m-b-1">
+            <div class="col-md-12 table-responsive">
+                <table datatable [dtOptions]="withdrawableOptions"
+                    class="table table-striped table-bordered table-hover">
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+<app-loader *ngIf="showLoading"></app-loader>

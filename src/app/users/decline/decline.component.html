@@ -1,0 +1,81 @@
+<div class="row py-3">
+
+    <div class="col-xl-12 col-sm-12">
+
+        <div class="row py-3 mt-3 mb-3">
+            <div class="col-sm-6 cus-stle">
+                <h4>Blocked Streamers</h4>
+            </div>
+            <div class="col-sm-6 text-right d-none">
+                <div class="addBtn mr-auto" (click)="addUser()">
+                    <button type="button" class="btn btn-primary"><i class="feather icon-plus"></i>
+                        Add User
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row m-b-2 text-center d-none">
+             <div class="col-sm-4 stle">
+                <div class="card card-custom py-4">
+                    <h5>Total Users : 109</h5>
+                </div>
+               
+            </div>
+            <div class="col-sm-4 stle">
+                <div class="card card-custom py-4">
+                    <h5>Total Approved : 85</h5>
+                </div>
+            </div>
+            <div class="col-sm-4 stle ">
+                <div class="card card-custom py-4">
+                    <h5>Total Declined : 24</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="row m-b-1 d-none">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <div class="cus-label">
+                        <span>Type</span>
+                    </div>
+                    <select class="form-control" name="validation-cmbGear">
+                        <option value disabled>Select Type..</option>
+                        <option>All</option>
+                        <option>Viewers</option>
+                        <option>Steamers</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <div class="cus-label">
+                        <span>Status</span>
+                    </div>
+                    <select class="form-control" name="validation-cmbGear">
+                        <option value disabled>Select Status..</option>
+                        <option>All</option>
+                        <option>Approved</option>
+                        <option>Declined</option>
+                    </select>
+                    <!-- <label *ngIf="!cmbGear.valid && (cmbGear.dirty || cmbGear.touched || isSubmit)"
+                        id="validation-cmbGear-error"
+                        class="error jquery-validation-error small form-text invalid-feedback">The Gear selection
+                        should be required.</label> -->
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <button type="button" class="btn btn-primary"><i class="feather icon-search"></i>
+                    Search</button>&nbsp;
+                <button type="button" class="btn btn-warning">Clear</button>
+
+            </div>
+        </div>
+        <div class="table-responsive my-3">
+            <table datatable [dtOptions]="dtExportButtonOptions" 
+                class="table table-striped table-bordered table-hover">
+            </table>
+        </div>
+    </div>
+</div>

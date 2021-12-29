@@ -1,0 +1,211 @@
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <app-card [hidHeader]="true" cardClass="user-card user-card-1 mt-4 p-b-0" blockClass="pt-0">
+            <div class="user-about-block text-center">
+                <div class="row align-items-end">
+                    <div class="col">
+                        <img class="img-radius img-fluid wid-80" *ngIf="profileInfo?.profile_pic==null"
+                            src="https://th.bing.com/th/id/R.d310015ab08e2036e575fd43b4b0282e?rik=bo7Un%2bAqcFUbCw&riu=http%3a%2f%2fwww.clipartbest.com%2fcliparts%2f9T4%2f6bR%2f9T46bRMqc.png&ehk=mXXYU15At%2bIZgxDt%2ftTLgjVcjsht4%2bxBO9MvziWbWWk%3d&risl=&pid=ImgRaw&r=0"
+                            alt="User image">
+                        <img class="img-radius img-fluid wid-80" *ngIf="profileInfo?.profile_pic!==null"
+                            src={{profileInfo?.profile_pic}} alt="User image">
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="javascript:" data-toggle="modal" data-target="#modal-report">
+                    <h4 class="mb-1 mt-3">{{profileInfo?.name}}</h4>
+                </a>
+                <p class="mb-3 text-muted"><i class="feather icon-calendar"> </i> {{profileInfo?.dob}}</p>
+                <p class="mb-1"><b>Email : </b><a> {{profileInfo?.email}}</a></p>
+
+            </div>
+            <div class="row m-b-10">
+                <div class="col">
+                    <a>
+                        <h5 class="text-muted m-t-1">Profile Info
+                        </h5>
+                    </a>
+                </div>
+            </div>
+            <div class="row m-b-10">
+                <div class="col b-b-1">
+                    <a href="javascript:">
+                        <h6 class="text-light-black">Is Streamer <span class="float-right f-13 cap">
+                                {{profileInfo?.user_type=='STREAMER'?'Yes':'No'}}</span>
+                        </h6>
+                    </a>
+                </div>
+            </div>
+
+            <!-- <div class="row m-b-10">
+                <div class="col b-b-1">
+                    <a href="javascript:">
+                        <h6 class="text-light-black">Followings<span class="float-right f-13">
+                                {{profileInfo?.following}}</span>
+                        </h6>
+                    </a>
+                </div>
+            </div>
+            <div class="row m-b-10">
+                <div class="col b-b-1">
+                    <a href="javascript:">
+                        <h6 class="text-light-black">Blockers<span class="float-right f-13">
+                                {{profileInfo?.blokers}}</span>
+                        </h6>
+                    </a>
+                </div>
+            </div>
+            <div class="row m-b-10">
+                <div class="col b-b-1">
+                    <a href="javascript:">
+                        <h6 class="text-light-black">Total Sessions<span class="float-right f-13">
+                                30</span>
+                        </h6>
+                    </a>
+                </div>
+            </div> -->
+            <div class="row m-b-10">
+                <div class="col b-b-1">
+                    <a href="javascript:">
+                        <h6 class="text-light-black">Pearls Earrings<span class="float-right f-13">
+                                {{profileInfo?.pearlsEarned}}</span>
+                        </h6>
+                    </a>
+                </div>
+            </div>
+            <div class="row m-b-10">
+                <div class="col b-b-1">
+                    <a href="javascript:">
+                        <h6 class="text-light-black">Crowns Purchased<span class="float-right f-13">
+                                {{profileInfo?.purchasedCrowns}}</span>
+                        </h6>
+                    </a>
+                </div>
+            </div>
+            <div class="row m-b-10">
+                <div class="col b-b-1">
+                    <a href="javascript:">
+                        <h6 class="text-light-black">Gifts Received<span class="float-right f-13">
+                                {{profileInfo?.giftsReceived}}</span>
+                        </h6>
+                    </a>
+                </div>
+            </div>
+        </app-card>
+    </div>
+    <div class="col-sm-3"></div>
+    <!-- <div class="col-sm-9">
+        <div class="card">
+            <div class="card-header">
+                <h5>Live Streams</h5>
+            </div>
+            <div class="card-body">
+                <div class="row ">
+                    <div class="col-md-4 col-sm-6 my-2">
+                        <div class="card mb-3">
+                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/y5c7RgaOYrg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title">Jaqeline Fernandez</h5>
+                                    </div>
+                                    <div class="col text-right">
+                                        <button class="btn  btn-outline-primary dropdown-toggle btn-smal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</button>
+                                        <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 43px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                            <a class="dropdown-item" href="#!">Chat</a>
+                                            <a class="dropdown-item" href="#!">Block</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="card-text"><small class="text-muted">Ended at 08:29 pm 30/12/2020</small></p>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="col-md-4 col-sm-6 my-2">
+                        <div class="card mb-3">
+                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/QEZbiQTd8Sw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title">Alia</h5>
+                                    </div>
+                                    <div class="col text-right">
+                                        <button class="btn btn-primary btn-smal">More</button>
+                                    </div>
+                                </div>
+                                <p class="card-text"><small class="text-muted">Ended at 08:29 pm 30/12/2020</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 my-2">
+                        <div class="card mb-3">
+                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/I1EPM5JPAYI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title">Sam</h5>
+                                    </div>
+                                    <div class="col text-right">
+                                        <button class="btn btn-primary btn-smal">More</button>
+                                    </div>
+                                </div>
+                                <p class="card-text"><small class="text-muted">Ended at 08:29 pm 30/12/2020</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 my-2">
+                        <div class="card mb-3">
+                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/YYvvnHroPdw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title">Jam</h5>
+                                    </div>
+                                    <div class="col text-right">
+                                        <button class="btn btn-primary btn-smal">More</button>
+                                    </div>
+                                </div>
+                                <p class="card-text"><small class="text-muted">Ended at 08:29 pm 30/12/2020</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 my-2">
+                        <div class="card mb-3">
+                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/WM_OEoC55oo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title">Kim</h5>
+                                    </div>
+                                    <div class="col text-right">
+                                        <button class="btn btn-primary btn-smal">More</button>
+                                    </div>
+                                </div>
+                                <p class="card-text"><small class="text-muted">Ended at 08:29 pm 30/12/2020</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 my-2">
+                        <div class="card mb-3">
+                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/C9_8rWMBgpY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title">Lynda</h5>
+                                    </div>
+                                    <div class="col text-right">
+                                        <button class="btn btn-primary btn-smal">More</button>
+                                    </div>
+                                </div>
+                                <p class="card-text"><small class="text-muted">Ended at 08:29 pm 30/12/2020</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</div>

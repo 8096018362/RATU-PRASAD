@@ -1,0 +1,19 @@
+<br>
+<div class="row">
+    <div class="col-sm-3">
+        <app-card [hidHeader]="true" [isCardFooter]="false">
+            <div *ngFor="let setting of settingList;let i=index">
+                <div class="custom-card" [ngClass]="{'title-active': selectedSetting===setting.name}">
+                    <div class="title" [routerLink]="setting.link" (click)="selectedSetting=setting.name">
+                        {{setting.name}} settings</div>
+                </div>
+            </div>
+        </app-card>
+    </div>
+    <div class="col-sm-9">
+        <app-card [hidHeader]="true" [isCardFooter]="false">
+            <h4 class="m-b-2 u-c">{{selectedSetting}} Settings</h4>
+            <router-outlet></router-outlet>
+        </app-card>
+    </div>
+</div>

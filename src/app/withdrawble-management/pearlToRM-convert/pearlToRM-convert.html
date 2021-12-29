@@ -1,0 +1,57 @@
+<div class="row t-3 mb-3">
+    <div class="col-xl-12 col-sm-12">
+        <div class="row py-3 mt-3 mb-3">
+            <div class="col-sm-6 cus-stle">
+                <h4>Pearl To RM Convertion</h4>
+            </div>
+            <div class="col-sm-6 text-right">
+            </div>
+        </div>
+        <div class="row my-4" *ngIf="form" [formGroup]="form">
+            <div class="form-group col-lg-4">
+                <div class="cus-label">
+                    <span>Pearl Type</span>
+                </div>
+                <input type="text" class="form-control" formControlName="pearl_type" id="pearl_type"
+                    placeholder="Enter Pearl Type" required>
+                <div class="error-msg" *ngIf="!form.get('pearl_type').valid  && formValidate">
+                    <span *ngIf="form.get('pearl_type').errors['required']">Please enter Pearl Type</span>
+                </div>
+            </div>
+            <div class="form-group col-lg-4">
+                <div class="cus-label">
+                    <span>Conversion Rate</span>
+                </div>
+                <input type="text" class="form-control" formControlName="conversion_rate" id="conversion_rate"
+                    placeholder="Conversion Rate" required>
+                <div class="error-msg" *ngIf="!form.get('conversion_rate').valid  && formValidate">
+                    <span *ngIf="form.get('conversion_rate').errors['required']">Please enter Conversion Rate</span>
+                </div>
+            </div>
+            <div class="form-group col-lg-4">
+                <div class="cus-label">
+                    <span>Status</span>
+                </div>
+                <select class="form-control" name="validation-cmbGear" formControlName="status" required>
+                    <option [value]="status.value" *ngFor="let status of statusList">{{status.text}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group col-lg-4">
+                <div class="cus-label">
+                    <span>Description</span>
+                </div>
+                <textarea class="form-control" formControlName="description" id="desc" rows="3" required></textarea>
+                <div class="error-msg" *ngIf="!form.get('description').valid  && formValidate">
+                    <span *ngIf="form.get('description').errors['required']">Please enter Description</span>
+                </div>
+            </div>
+            <div class="form-group col-lg-4 align-self-end">
+                <button type="submit" class="btn btn-primary" *ngIf="!editPearlObj" (click)="save()">Submit</button>
+                <button type="submit" class="btn btn-primary" *ngIf="editPearlObj" (click)="update()">Update</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<app-loader *ngIf="showLoading"></app-loader>

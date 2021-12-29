@@ -1,0 +1,138 @@
+<div class="row">
+    <div class="col-xl-12 col-sm-12">
+        <app-card [hidHeader]="true">
+            <div class="row my-4" *ngIf="showError">
+                <div class="col-xl-12 col-sm-12">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Form inavlid!</strong> Please fill in all the required fields.
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row" *ngIf="form" [formGroup]="form">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class="cus-label">
+                            <span>Gift Name</span>
+                        </div>
+                        <input type="text" formControlName="name" placeholder="" class="form-control" required>
+                        <div class="error-msg" *ngIf="!form.get('name').valid  && formValidate">
+                            <span *ngIf="form.get('name').errors['required']">Please enter Gift Name</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class="cus-label">
+                            <span>Crown Value</span>
+                        </div>
+                        <input type="text" placeholder="" formControlName="value" class="form-control" required>
+                        <div class="error-msg" *ngIf="!form.get('value').valid  && formValidate">
+                            <span *ngIf="form.get('value').errors['required']">Please enter Gift Value</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class="cus-label">
+                            <span>Gift Conversion Rate to Pearls</span>
+                        </div>
+                        <input type="text" placeholder="" formControlName="conversion_rate" class="form-control"
+                            required>
+                        <div class="error-msg" *ngIf="!form.get('conversion_rate').valid  && formValidate">
+                            <span *ngIf="form.get('conversion_rate').errors['required']">Please enter Gift Conversion
+                                Rate to Pearls</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class="cus-label">
+                            <span>Status</span>
+                        </div>
+                        <select class="form-control" name="validation-cmbGear" formControlName="status" required>
+                            <option [value]="status.value" *ngFor="let status of statusList">{{status.text}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class="cus-label">
+                            <span>Gift Added by</span>
+                        </div>
+                        <input type="text" formControlName="added_by" placeholder="" class="form-control" readonly
+                            required>
+
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class="cus-label">
+                            <span>Remarks</span>
+                        </div>
+                        <textarea class="form-control" formControlName="remarks" placeholder="" rows="2"
+                            required></textarea>
+                        <div class="error-msg" *ngIf="!form.get('remarks').valid  && formValidate">
+                            <span *ngIf="form.get('remarks').errors['required']">Please enter Remarks</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-6">
+                    <div class="">
+                        <img [src]="icon" *ngIf="icon" style="width: 100px;height: 100px;" (click)="iconFile.click()" />
+                        <div class="custom-file">
+                            <div class="cus-label" (click)="iconFile.click()">
+                                <span>Update Gift Icon</span>
+                            </div>
+                            <input type="file" name="icon" style="display: none;" id="icon"
+                                (change)="onIconUpload($event, 'I')" accept=".png, .jpg, .jpeg"
+                                class="custom-file-input" #iconFile>
+
+                            <div class="error-msg" *ngIf="!icon  && formValidate">
+                                <span>Please Upload Gift Icon </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="mb-10">
+                        <img [src]="gif_img" *ngIf="gif_img" style="width: 100px;height: 100px;"
+                            (click)="gifFile.click()" />
+                        <div class="custom-file">
+                            <div class="cus-label" (click)="gifFile.click()">
+                                <span>Update Gift Animation</span>
+                            </div>
+                            <input type="file" name="gif" style="display: none;" id="gif"
+                                (change)="onGifUpload($event, 'I')" accept=".png, .jpg, .jpeg" class="custom-file-input"
+                                #gifFile>
+
+                            <div class="error-msg" *ngIf="!gifName  && formValidate">
+                                <span>Please Upload Gift Animation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group text-center">
+                    <button type="button" class="btn btn-danger" (click)="clearForm()">Clear</button> &nbsp;
+                    <button type="button" class="btn btn-primary" (click)="save()">Update</button>
+                </div>
+            </div>
+
+        </app-card>
+
+    </div>
+</div>
+<app-loader *ngIf="showLoading"></app-loader>

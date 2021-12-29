@@ -1,0 +1,11 @@
+<div mat-dialog-content>
+    <div class="headerText">Reason to Reject</div>
+    <div class="model-body">
+        <textarea id="reason" [(ngModel)]="reason"></textarea>
+    </div>
+    <div class="buttonBar">
+        <button class="approveBtn" (click)="submit()" mat-flat-button>Submit</button>
+        <button class="closeBtn" (click)="close()" mat-flat-button>Close</button>
+
+    </div>
+</div>

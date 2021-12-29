@@ -1,0 +1,11 @@
+<div mat-dialog-content>
+        <div class="headerText">{{dialogData|titlecase}}</div>
+    <div class="model-body">
+        <p>Are you sure you want to {{dialogData|titlecase}}?</p>
+    </div>
+    <div class="buttonBar">
+        <button class="approveBtn" (click)="approveAgent()" mat-flat-button>{{dialogData|titlecase}}</button>
+        <button class="closeBtn" (click)="close()" mat-flat-button>Close</button>
+
+    </div>
+</div>

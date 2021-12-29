@@ -1,0 +1,197 @@
+<div class="row">
+    <div class="col">
+        <div class="card bg-c-red text-white widget-visitor-card">
+            <div class="card-body text-center">
+                <h2 class="text-white">{{turnOverReport.totalEarnings|number:'1.2-2'}} <small>Crowns</small></h2>
+                <h4 class="text-white">52 <small>RM</small></h4>
+                <h5 class="text-white">Total Earnings</h5>
+                <!-- <i class="feather icon-user"></i> -->
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card bg-c-yellow text-white widget-visitor-card">
+            <div class="card-body text-center">
+                <h2 class="text-white">{{turnOverReport.totalBonus|number:'1.2-2'}} <small>Crowns</small></h2>
+                <h4 class="text-white">52 <small>RM</small></h4>
+                <h5 class="text-white">Total Bonus</h5>
+                <!-- <i class="feather icon-user"></i> -->
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card bg-c-blue text-white widget-visitor-card">
+            <div class="card-body text-center">
+                <h2 class="text-white">{{turnOverReport.totalSpent|number:'1.2-2'}} <small>Pearls</small></h2>
+                <h4 class="text-white">52 <small>RM</small></h4>
+                <h5 class="text-white">Total Spent</h5>
+                <!-- <i class="feather icon-user"></i> -->
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card bg-c-red text-white widget-visitor-card">
+            <div class="card-body text-center">
+                <h2 class="text-white">{{turnOverReport.totalWithdraw|number:'1.2-2'}} <small>Pearls</small></h2>
+                <h4 class="text-white">52 <small>RM</small></h4>
+                <h5 class="text-white">Total Withdrawal</h5>
+                <!-- <i class="feather icon-user"></i> -->
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card bg-c-green text-white widget-visitor-card">
+            <div class="card-body text-center">
+                <h2 class="text-white">{{turnOverReport.walletBalance|number:'1.2-2'}} <small>RM</small></h2>
+                <h4><br></h4>
+                <h5 class="text-white">Balance in Wallet</h5>
+                <!-- <i class="feather icon-user"></i> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col">
+        <!-- <div class="row mt-5 mb-3">
+            <div class="col-md-4">
+                <input type="text" name="daterange" class="form-control" value="01/01/2018 - 01/15/2018">
+            </div>
+        </div> -->
+        <div class="row text-left px-4 mb-2">
+            <div class="col">Date/Time</div>
+            <div class="col">Streamer Name</div>
+            <div class="col">Bonus</div>
+            <div class="col">Purchased</div>
+            <div class="col">Withdraw</div>
+            <div class="col">Pearls Earned</div>
+            <div class="col">Wallet Balance (RM)</div>
+        </div>
+        <div *ngFor="let user of turnOverReport.publisherList;let i=index">
+            <ngb-accordion [closeOthers]="true" activeIds=i class="able-pro-accordion">
+
+                <ngb-panel id=i>
+                    <ng-template ngbPanelTitle>
+                        <div class="row my-2 text-left">
+                            <div class="col">-</div>
+                            <div class="col">
+                                <!-- <img class="rounded-circle" style="width:40px;" src="assets/images/user/avatar-1.jpg"
+                                    alt="activity-user"> -->
+                                <span class="pl-3">{{user.user_name}}</span>
+                            </div>
+                            <div class="col">-</div>
+                            <div class="col">{{getPurchased(user)}} | 25000 Crowns</div>
+                            <div class="col">{{getWithdraw(user)}}</div>
+                            <div class="col">{{user.earned_pearls?user.earned_pearls:0}}</div>
+                            <div class="col">-</div>
+                        </div>
+                    </ng-template>
+                    <ng-template ngbPanelContent>
+                        <div class="row my-2 text-left" *ngFor="let tran of turnOverReport.transactionList">
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            <div class="col">{{tran.amount}} RM | 1000 Crowns</div>
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            <div class="col"></div>
+                        </div>
+
+                        <!-- <div class="row my-2 text-left">
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            <div class="col">300</div>
+                            <div class="col">100 RM | 1000 Crowns</div>
+                            <div class="col">5000</div>
+                            <div class="col">10000</div>
+                            <div class="col">50</div>
+                        </div>
+
+                        <div class="row my-2 text-left">
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            <div class="col">100</div>
+                            <div class="col">100 RM | 1000 Crowns</div>
+                            <div class="col">15000</div>
+                            <div class="col">30000</div>
+                            <div class="col">50</div>
+                        </div> -->
+                    </ng-template>
+                </ngb-panel>
+
+                <!-- <ngb-panel id="static-2">
+                <ng-template ngbPanelTitle>
+                    <div class="row my-2 text-left">
+                        <div class="col">05-01-2021</div>
+                        <div class="col"><img class="rounded-circle" style="width:40px;"
+                                src="assets/images/default-user.png" alt="activity-user"><span
+                                class="pl-3">Kristen</span></div>
+                        <div class="col">900</div>
+                        <div class="col">1500 RM | 25000 Crowns</div>
+                        <div class="col">520000</div>
+                        <div class="col">200</div>
+                        <div class="col">200</div>
+                    </div>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                    <div class="row my-2 text-left">
+                        <div class="col"></div>
+                        <div class="col"></div>
+                        <div class="col">500</div>
+                        <div class="col">100 RM | 1000 Crowns</div>
+                        <div class="col">10000</div>
+                        <div class="col">20000</div>
+                        <div class="col">100</div>
+                    </div>
+
+                    <div class="row my-2 text-left">
+                        <div class="col"></div>
+                        <div class="col"></div>
+                        <div class="col">300</div>
+                        <div class="col">100 RM | 1000 Crowns</div>
+                        <div class="col">5000</div>
+                        <div class="col">10000</div>
+                        <div class="col">50</div>
+                    </div>
+
+                    <div class="row my-2 text-left">
+                        <div class="col"></div>
+                        <div class="col"></div>
+                        <div class="col">100</div>
+                        <div class="col">100 RM | 1000 Crowns</div>
+                        <div class="col">15000</div>
+                        <div class="col">30000</div>
+                        <div class="col">50</div>
+                    </div>
+                </ng-template>
+            </ngb-panel> -->
+            </ngb-accordion>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(window).ready(function () {
+        $(function () {
+            $('input[name="daterange"]').daterangepicker({
+                opens: 'left'
+            }, function (start, end, label) { });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    RM(document).ready(function () {
+        $(function () {
+            // [ sale-scroll ] start
+            var px = new PerfectScrollbar('.app-scroll', {
+                wheelSpeed: .5,
+                swipeEasing: 0,
+                wheelPropagation: 1,
+                minScrollbarLength: 40,
+            });
+            // [ sale-scroll ] end
+        });
+    });
+</script>

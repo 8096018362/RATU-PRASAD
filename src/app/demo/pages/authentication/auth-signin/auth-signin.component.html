@@ -1,0 +1,101 @@
+<div class="auth-wrapper background-dark">
+  <div class="auth-content">
+    <div class="card">
+      <div id="recaptcha-container"></div>
+      <div class="row align-items-center text-center">
+        <div class="col-md-12">
+          <div class="card-body p-1">
+            <img src="assets/images/logo_ratu.png" style="max-width: 250px;" alt="" class="img-fluid mb-4">
+            <h4 class="mb-5 f-w-400">Signin</h4>
+
+            <form [formGroup]="loginForm">
+              <div class="form-group">
+                <div class="cus-label">
+                  <span>Email</span>
+                </div>
+                <input type="email" placeholder="" class="form-control mb-2" formControlName="email">
+                <!-- <ngx-intl-tel-input [cssClass]="'custom form-control w-100'"
+                  [preferredCountries]="preferredCountries"
+                  [enableAutoCountrySelect]="true"
+                  [enablePlaceholder]="true"
+                  [searchCountryFlag]="true"
+                  [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                  [selectFirstCountry]="false"
+                  [selectedCountryISO]="CountryISO.India"
+                  [maxLength]="15"
+                  [phoneValidation]="true"
+                  [separateDialCode]="separateDialCode"
+                  name="phone"
+                  formControlName="phone">
+                </ngx-intl-tel-input> -->
+                <div class="error-msg" *ngIf="submittedForm && !loginForm.get('email').valid">
+                  <span *ngIf="loginForm.get('email').errors['required']">Email is required</span>
+                </div>
+                <div class="cus-label1">
+                  <label>Password</label>
+                </div>
+                <input type="password" placeholder="" class="form-control" formControlName="password">
+
+                <div class="error-msg" *ngIf="!loginForm.get('password').valid  && submittedForm">
+                  <span *ngIf="loginForm.get('password').errors['required']">Password is required</span>
+                </div>
+                <div class="validation-errors text-left">
+                  <ng-container *ngFor="let validation of validation_messages.phone">
+                    <div
+                      *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+
+              <div class="form-group d-none">
+                <div class="cus-label">
+                  <span>OTP</span>
+                </div>
+                <input class="form-control" type="text" name="zipcode" id="zipcode" placeholder="Enter OTP"
+                  maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly />
+              </div>
+              <div class="validation-errors text-left">
+                <ng-container>
+                  <div *ngIf="errorMessage">
+                    {{ errorMessage }}
+                  </div>
+                </ng-container>
+              </div>
+
+
+              <!-- <div class="form-group">
+                <div class="cus-label">
+                  <span>Password</span>
+                </div>
+                <input type="password" placeholder="" class="form-control"  formControlName="password">
+                <div class="validation-errors text-left">
+                  <ng-container *ngFor="let validation of validation_messages.password">
+                    <div
+                      *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+              </div> -->
+
+
+              <!-- <div class="custom-control custom-checkbox text-left mb-4 mt-2">
+              <input type="checkbox" class="custom-control-input" id="customCheck1">
+              <label class="custom-control-label" for="customCheck1">Save credentials.</label>
+            </div> -->
+              <button class="btn btn-block btn-primary mb-4" type="submit" (click)="gotoDashboard()">Submit</button>
+              <!-- <button class="btn btn-block btn-primary mb-4 d-none" type="submit">Signin</button> -->
+              <!-- <p class="mb-2 text-muted">Forgot password? <a [routerLink]="['/auth/reset-password']"
+                class="f-w-400">Reset</a></p> 
+             <p class="mb-0 text-muted">Don’t have an account? <a [routerLink]="['/auth/signup']"
+                class="f-w-400">Signup</a></p> -->
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

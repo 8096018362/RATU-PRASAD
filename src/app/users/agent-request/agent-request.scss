@@ -1,0 +1,52 @@
+.stle{
+    margin-bottom: 0;
+    color: #33454e;
+    font-size: 0.9375rem;
+    font-weight: 600;
+}
+
+.badge{
+cursor: pointer;
+}
+.model-body{
+    textarea{
+        width:100%;
+        margin:16px 0px;
+    }
+    p{
+        margin:10px 0px;
+    }
+}
+
+.button_bar{
+    display:flex;
+    button{
+        margin-right: 10px;
+    }
+}
+
+.headerText{
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.buttonBar{
+    width:100%;
+    button{
+        width: 48%;
+    }
+    .approveBtn{
+        color: #fff;
+        margin-right:14px;
+        border-color: #B39900 !important;
+        background: #B39900 !important;
+    }
+    .closeBtn{
+        color: #fff;
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+}

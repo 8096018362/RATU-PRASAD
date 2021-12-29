@@ -1,0 +1,27 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HistoryComponent } from './history.component';
+import { Routes, RouterModule } from '@angular/router';
+import { SharedModule } from '../../theme/shared/shared.module';
+import { DataTablesModule } from 'angular-datatables';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: HistoryComponent
+  }
+];
+
+
+@NgModule({
+  declarations: [HistoryComponent],
+  imports: [
+    CommonModule,
+    SharedModule,
+    DataTablesModule,
+    RouterModule.forChild(routes)
+  ]
+})
+
+
+export class VideosHistoryModule { }

@@ -1,0 +1,292 @@
+<div class="row" style="margin-top: -90px;">
+  <div class="col-sm-12">
+    <div class="card email-card">
+      <div class="card-header">
+        <div class="mail-header">
+          <div class="row align-items-center">
+            <!-- [ inbox-left section ] start -->
+            <div class="col-xl-2 col-md-3">
+              
+            </div>
+            <!-- [ inbox-left section ] end -->
+            <!-- [ inbox-right section ] start -->
+            <div class="col-xl-10 col-md-9">
+              <div class="input-group mb-0">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="search"><i class="feather icon-search"></i></label>
+                </div>
+                <input type="text" class="form-control" id="search" aria-describedby="emailHelp" placeholder="Search">
+              </div>
+            </div>
+            <!-- [ inbox-right section ] end -->
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="mail-body">
+          <div class="row">
+            <!-- [ inbox-left section ] start -->
+            <div class="col-xl-2 col-md-3">
+              <div class="mb-3">
+                <a [routerLink]="['/email/mail-compose']" class="btn waves-effect waves-light btn-rounded btn-outline-primary">+ Compose</a>
+              </div>
+              <ul class="mb-2 nav nav-tab flex-column nav-pills" id="v-pills-tab" aria-orientation="vertical">
+                <li class="nav-item mail-section">
+                  <a [routerLink]="['/email/mail-inbox']" class="nav-link text-left">
+                    <span><i class="feather icon-inbox"></i> Inbox</span>
+                    <span class="float-right">7</span>
+                  </a>
+                  <ul>
+                    <li class="nav-item mail-section" style="list-style: none;">
+                      <a [routerLink]="['/email/mail-inbox']" class="nav-link text-left"><span><i class="feather icon-inbox"></i> Thailand</span>
+                      <span class="float-right">1</span></a>
+                    </li>
+                    <li class="nav-item mail-section" style="list-style: none;">
+                      <a [routerLink]="['/email/mail-inbox']" class="nav-link text-left"><span><i class="feather icon-inbox"></i> Indonesia</span>
+                        <span class="float-right">1</span></a>
+                      </li>
+                    <li class="nav-item mail-section" style="list-style: none;">
+                      <a [routerLink]="['/email/mail-inbox']" class="nav-link text-left"><span><i class="feather icon-inbox"></i> Vietnam</span>
+                      <span class="float-right">3</span></a>
+                    </li>
+                    <li class="nav-item mail-section" style="list-style: none;">
+                      <a [routerLink]="['/email/mail-inbox']" class="nav-link text-left"><span><i class="feather icon-inbox"></i> Malaysia</span>
+                            <span class="float-right">2</span></a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item mail-section">
+                  <a class="nav-link text-left" [ngClass]="{'active': isMail === 'starred'}" (click)="isMail = 'starred'" id="v-pills-starred-tab" data-toggle="pill" href="javascript:" role="tab">
+                    <span><i class="feather icon-star-on"></i> Starred</span>
+                  </a>
+                </li>
+                <li class="nav-item mail-section">
+                  <a class="nav-link text-left" [ngClass]="{'active': isMail === 'draft'}" (click)="isMail = 'draft'" id="v-pills-messages-tab" data-toggle="pill" href="javascript:" role="tab">
+                    <span><i class="feather icon-file-text"></i> Drafts</span>
+                  </a>
+                </li>
+                <li class="nav-item mail-section">
+                  <a class="nav-link text-left" [ngClass]="{'active': isMail === 'sent'}" (click)="isMail = 'sent'" id="v-pills-settings-tab" data-toggle="pill" href="javascript:" role="tab">
+                    <span><i class="feather icon-navigation"></i> Sent Mail</span>
+                  </a>
+                </li>
+              </ul>
+              
+            </div>
+            <!-- [ inbox-left section ] end -->
+            <!-- [ inbox-right section ] start -->
+            <div class="col-xl-10 col-md-9 inbox-right">
+              <div class="email-btn">
+                <button type="button" class="btn waves-effect waves-light btn-icon btn-rounded btn-outline-secondary mb-2"><i class="feather icon-alert-circle"></i></button>
+                <button type="button" class="btn waves-effect waves-light btn-icon btn-rounded btn-outline-secondary mb-2"><i class="feather icon-inbox"></i></button>
+                <!-- <button type="button" class="btn waves-effect waves-light btn-icon btn-rounded btn-outline-secondary mb-2"><i class="feather icon-trash-2"></i></button> -->
+                <!-- <div class="btn-group mb-2 mr-2" ngbDropdown>
+                  <button class="btn drp-icon btn-rounded btn-outline-secondary dropdown-toggle" ngbDropdownToggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-log-out"></i></button>
+                  <div class="dropdown-menu" ngbDropdownMenu>
+                    <a class="dropdown-item" href="javascript:">Move to</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item pl-4" href="javascript:"><span><i class="feather icon-users mr-2"></i>Social</span></a>
+                    <a class="dropdown-item pl-4" href="javascript:"><span><i class="feather icon-tag mr-2"></i>Promotion</span></a>
+                    <a class="dropdown-item pl-4" href="javascript:"><span><i class="feather icon-upload-cloud mr-2"></i>Update</span></a>
+                    <a class="dropdown-item pl-4" href="javascript:"><span><i class="feather icon-message-square mr-2"></i>Forum</span></a>
+                  </div>
+                </div> -->
+                <!-- <div class="btn-group mb-2 mr-2" ngbDropdown>
+                  <button class="btn drp-icon btn-rounded btn-outline-secondary dropdown-toggle" ngbDropdownToggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                    class="feather icon-more-vertical"></i></button>
+                  <div class="dropdown-menu" ngbDropdownMenu>
+                    <a class="dropdown-item" href="javascript:">Mark as unread</a>
+                    <a class="dropdown-item" href="javascript:">Mark as important</a>
+                    <a class="dropdown-item" href="javascript:">Mark as not important</a>
+                    <a class="dropdown-item" href="javascript:">Filter messages like these</a>
+                    <a class="dropdown-item" href="javascript:">Mute</a>
+                  </div>
+                </div> -->
+              </div>
+              <div>
+                <div class="mail-body-content table-responsive">
+                  <table class="table">
+                    <tbody>
+                    <tr class="unread">
+                      <td>
+                        <div class="check-star">
+                          <div class="form-group d-inline">
+                            <div class="checkbox checkbox-primary checkbox-fill d-inline">
+                              <input type="checkbox" name="checkbox-s-in-1" id="checkbox-s-infill-1">
+                              <label for="checkbox-s-infill-1" class="cr"></label>
+                            </div>
+                          </div>
+                          <a href="javascript:"><i class="feather icon-star ml-2"></i></a>
+                        </div>
+                      </td>
+                      <td><a [routerLink]="['/email/mail-read']" class="email-name waves-effect">John Doe</a></td>
+                      <td><a [routerLink]="['/email/mail-read']" class="email-name waves-effect">Coming Up Next Week</a></td>
+                      <td class="email-time">13:02 PM</td>
+                    </tr>
+                    <tr class="unread">
+                      <td>
+                        <div class="check-star">
+                          <div class="form-group d-inline">
+                            <div class="checkbox checkbox-primary checkbox-fill d-inline">
+                              <input type="checkbox" name="checkbox-s-in-2" id="checkbox-s-infill-2">
+                              <label for="checkbox-s-infill-2" class="cr"></label>
+                            </div>
+                          </div>
+                          <a href="javascript:"><i class="feather icon-star-on text-c-yellow ml-2"></i></a>
+                        </div>
+                      </td>
+                      <td><a [routerLink]="['/email/mail-read']" class="email-name waves-effect">Google Inc</a></td>
+                      <td>
+                        <a [routerLink]="['/email/mail-read']" class="email-name waves-effect">Lorem ipsum dolor sit amet, consectetuer</a>
+                        <div><a href="javascript:" class="mail-attach"><i class="feather icon-image mr-2"></i>user.png</a>
+                          <a href="javascript:" class="mail-attach ml-2"><i class="feather icon-file-text mr-2"></i>file.doc</a>
+                        </div>
+                      </td>
+
+                      <td class="email-time">12:01 AM</td>
+                    </tr>
+                    <tr class="read">
+                      <td>
+                        <div class="check-star">
+                          <div class="form-group d-inline">
+                            <div class="checkbox checkbox-primary checkbox-fill d-inline">
+                              <input type="checkbox" name="checkbox-s-in-3" id="checkbox-s-infill-3">
+                              <label for="checkbox-s-infill-3" class="cr"></label>
+                            </div>
+                          </div>
+                          <a href="javascript:"><i class="feather icon-star ml-2"></i></a>
+                        </div>
+                      </td>
+                      <td><a [routerLink]="['/email/mail-read']" class="email-name waves-effect">Sara Soudein</a></td>
+                      <td><a [routerLink]="['/email/mail-read']" class="email-name waves-effect">SVG new updates comes for you</a></td>
+                      <td class="email-time">00:05 AM</td>
+                    </tr>
+                    <tr class="read">
+                      <td>
+                        <div class="check-star">
+                          <div class="form-group d-inline">
+                            <div class="checkbox checkbox-primary checkbox-fill d-inline">
+                              <input type="checkbox" name="checkbox-s-in-4" id="checkbox-s-infill-4">
+                              <label for="checkbox-s-infill-4" class="cr"></label>
+                            </div>
+                          </div>
+                          <a href="javascript:"><i class="feather icon-star ml-2"></i></a>
+                        </div>
+                      </td>
+                      <td><a [routerLink]="['/email/mail-read']" class="email-name waves-effect">Rinky Behl</a></td>
+                      <td><a [routerLink]="['/email/mail-read']" class="email-name waves-effect">Photoshop updates are available</a></td>
+                      <td class="email-time">10:01 AM</td>
+                    </tr>
+                    <tr class="read">
+                      <td>
+                        <div class="check-star">
+                          <div class="form-group d-inline">
+                            <div class="checkbox checkbox-primary checkbox-fill d-inline">
+                              <input type="checkbox" name="checkbox-s-in-5" id="checkbox-s-infill-5">
+                              <label for="checkbox-s-infill-5" class="cr"></label>
+                            </div>
+                          </div>
+                          <a href="javascript:"><i class="feather icon-star-on text-c-yellow ml-2"></i></a>
+                        </div>
+                      </td>
+                      <td><a [routerLink]="['/email/mail-read']" class="email-name waves-effect">Harry John</a></td>
+                      <td><a [routerLink]="['/email/mail-read']" class="email-name waves-effect">New upcoming data available</a></td>
+                      <td class="email-time">11:01 AM</td>
+                    </tr>
+                    <tr class="read">
+                      <td>
+                        <div class="check-star">
+                          <div class="form-group d-inline">
+                            <div class="checkbox checkbox-primary checkbox-fill d-inline">
+                              <input type="checkbox" name="checkbox-s-in-6" id="checkbox-s-infill-6">
+                              <label for="checkbox-s-infill-6" class="cr"></label>
+                            </div>
+                          </div>
+                          <a href="javascript:"><i class="feather icon-star ml-2"></i></a>
+                        </div>
+                      </td>
+                      <td><a [routerLink]="['/email/mail-read']" class="email-name waves-effect">Hanry Joseph</a></td>
+                      <td><a [routerLink]="['/email/mail-read']" class="email-name waves-effect">SCSS current working for new updates</a></td>
+                      <td class="email-time">12:01 PM</td>
+                    </tr>
+                    <tr class="read">
+                      <td>
+                        <div class="check-star">
+                          <div class="form-group d-inline">
+                            <div class="checkbox checkbox-primary checkbox-fill d-inline">
+                              <input type="checkbox" name="checkbox-s-in-7" id="checkbox-s-infill-7">
+                              <label for="checkbox-s-infill-7" class="cr"></label>
+                            </div>
+                          </div>
+                          <a href="javascript:"><i class="feather icon-star ml-2"></i></a>
+                        </div>
+                      </td>
+                      <td><a [routerLink]="['/email/mail-read']" class="email-name waves-effect">Liu Koi Yan</a></td>
+                      <td><a [routerLink]="['/email/mail-read']" class="email-name waves-effect">Charts waiting for you</a>
+                        <div><a href="javascript:" class="mail-attach"><i class="feather icon-film mr-2"></i>video</a></div>
+                      </td>
+                      <td class="email-time">07:15 AM</td>
+                    </tr>
+                    <tr class="read">
+                      <td>
+                        <div class="check-star">
+                          <div class="form-group d-inline">
+                            <div class="checkbox checkbox-primary checkbox-fill d-inline">
+                              <input type="checkbox" name="checkbox-s-in-8" id="checkbox-s-infill-8">
+                              <label for="checkbox-s-infill-8" class="cr"></label>
+                            </div>
+                          </div>
+                          <a href="javascript:"><i class="feather icon-star-on text-c-yellow ml-2"></i></a>
+                        </div>
+                      </td>
+                      <td><a [routerLink]="['/email/mail-read']" class="email-name waves-effect">Google Inc</a></td>
+                      <td><a [routerLink]="['/email/mail-read']" class="email-name waves-effect">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</a></td>
+                      <td class="email-time">08:01 AM</td>
+                    </tr>
+                    <tr class="read">
+                      <td>
+                        <div class="check-star">
+                          <div class="form-group d-inline">
+                            <div class="checkbox checkbox-primary checkbox-fill d-inline">
+                              <input type="checkbox" name="checkbox-s-in-9" id="checkbox-s-infill-9">
+                              <label for="checkbox-s-infill-9" class="cr"></label>
+                            </div>
+                          </div>
+                          <a href="javascript:"><i class="feather icon-star ml-2"></i></a>
+                        </div>
+                      </td>
+                      <td><a [routerLink]="['/email/mail-read']" class="email-name waves-effect">John Doe</a></td>
+                      <td><a [routerLink]="['/email/mail-read']" class="email-name waves-effect">Coming Up Next Week</a></td>
+                      <td class="email-time">13:02 PM</td>
+                    </tr>
+                    <tr class="read">
+                      <td>
+                        <div class="check-star">
+                          <div class="form-group d-inline">
+                            <div class="checkbox checkbox-primary checkbox-fill d-inline">
+                              <input type="checkbox" name="checkbox-s-in-10" id="checkbox-s-infill-10">
+                              <label for="checkbox-s-infill-10" class="cr"></label>
+                            </div>
+                          </div>
+                          <a href="javascript:"><i class="feather icon-star ml-2"></i></a>
+                        </div>
+                      </td>
+                      <td><a [routerLink]="['/email/mail-read']" class="email-name waves-effect">Hanry Joseph</a></td>
+                      <td><a [routerLink]="['/email/mail-read']" class="email-name waves-effect">SCSS current working for new updates</a>
+                        <div><a href="javascript:" class="mail-attach"><i class="feather icon-file-text mr-2"></i>file.doc</a></div>
+                      </td>
+                      <td class="email-time">12:01 PM</td>
+                    </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!-- [ inbox-right section ] end -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

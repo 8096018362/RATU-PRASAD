@@ -1,0 +1,164 @@
+<div class="row">
+    <div class="col-xl-12 col-sm-12">
+        <app-card [hidHeader]="true" [isCardFooter]="true">
+            <form [formGroup]="addAgentWithdrawForm" (ngSubmit)="doSubmit()">
+                <div class="row text-right">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="m-0">RM
+                                    12,000.00</h3>
+                                <b style="color:#ff5252">Withdrawble Wallet Balance</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="cus-label">
+                                <span>Full Name</span>
+                            </div>
+                            <input type="text" placeholder="" class="form-control" formControlName="username">
+                            <div class="error-msg" *ngIf="!addAgentWithdrawForm.get('username').valid  && formValidate">
+                                <span *ngIf="addAgentWithdrawForm.get('username').errors['required']">Please enter
+                                    Name</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="cus-label">
+                                <span>Amount</span>
+                            </div>
+                            <input type="number" placeholder="" class="form-control" formControlName="amount">
+                            <div class="error-msg" *ngIf="!addAgentWithdrawForm.get('amount').valid  && formValidate">
+                                <span *ngIf="addAgentWithdrawForm.get('amount').errors['required']">Please enter
+                                    Amount</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="cus-label">
+                                <span>Account Number</span>
+                            </div>
+                            <input type="number" placeholder="" class="form-control" formControlName="account_number">
+                            <div class="error-msg" *ngIf="!addAgentWithdrawForm.get('account_number').valid  && formValidate">
+                                <span *ngIf="addAgentWithdrawForm.get('account_number').errors['required']">Please enter
+                                    Account Number</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="cus-label">
+                                <span>Branch Name</span>
+                            </div>
+                            <input type="text" placeholder="" class="form-control" formControlName="branch">
+                            <div class="error-msg" *ngIf="!addAgentWithdrawForm.get('branch').valid  && formValidate">
+                                <span *ngIf="addAgentWithdrawForm.get('branch').errors['required']">Please enter
+                                    Branch</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="cus-label">
+                                <span>Swift Code</span>
+                            </div>
+                            <input type="text" placeholder="" class="form-control" formControlName="swiftcode">
+                            <div class="error-msg" *ngIf="!addAgentWithdrawForm.get('swiftcode').valid  && formValidate">
+                                <span *ngIf="addAgentWithdrawForm.get('swiftcode').errors['required']">Please enter
+                                    Swift Code</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="cus-label">
+                                <span>Address</span>
+                            </div>
+                            <textarea formControlName="address" class="form-control" placeholder="" rows="2"
+                                required></textarea>
+                            <div class="error-msg" *ngIf="!addAgentWithdrawForm.get('address').valid  && formValidate">
+                                <span *ngIf="addAgentWithdrawForm.get('address').errors['required']">Please select
+                                    Address</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="cus-label">
+                                <span>Email</span>
+                            </div>
+                            <input type="text" placeholder="" class="form-control" formControlName="email">
+                            <div class="error-msg" *ngIf="!addAgentWithdrawForm.get('email').valid  && formValidate">
+                                <span *ngIf="addAgentWithdrawForm.get('email').errors['required']">Please enter
+                                    Email</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="cus-label">
+                                <span>Mobile</span>
+                            </div>
+                            <!-- <input type="text" placeholder="" class="form-control" formControlName="phoneNumber"> -->
+                            <ngx-intl-tel-input [cssClass]="'custom form-control w-100'"
+                                [preferredCountries]="preferredCountries" [enableAutoCountrySelect]="true"
+                                [enablePlaceholder]="true" [searchCountryFlag]="true"
+                                [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                                [selectFirstCountry]="false" [selectedCountryISO]="CountryISO.India" [maxLength]="15"
+                                [phoneValidation]="true" [separateDialCode]="separateDialCode" name="phone"
+                                formControlName="phoneNumber">
+                            </ngx-intl-tel-input>
+                            <div class="error-msg"
+                                *ngIf="!addAgentWithdrawForm.get('phoneNumber').valid  && formValidate">
+                                <span *ngIf="addAgentWithdrawForm.get('phoneNumber').errors['required']">Please enter
+                                    Mobile Number</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="cus-label">
+                                <span>Passport/IC Number</span>
+                            </div>
+                            <input type="text" placeholder="" class="form-control" formControlName="passport">
+                            <div class="error-msg" *ngIf="!addAgentWithdrawForm.get('passport').valid  && formValidate">
+                                <span *ngIf="addAgentWithdrawForm.get('passport').errors['required']">Please enter
+                                    Passport/IC Number</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group text-center">
+                        <button type="button" class="btn btn-danger">Clear</button> &nbsp;
+                        <button type="button" class="btn btn-primary" type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </app-card>
+
+    </div>
+</div>

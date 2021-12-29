@@ -1,0 +1,161 @@
+<div class="row">
+    <div class="col-md-12">
+        <app-card [hidHeader]="true" [isCardFooter]="false">
+            <div class="row">
+                <div class="col-sm-12 col-12 m-b-10">
+                    <div class="d-inline-block align-middle m-b-5"><img src="assets/images/user/avatar-4.jpg"
+                            alt="user image " class="wid-40 align-top m-r-15 img-rad-50">
+                        <div class="d-inline-block">
+                            <h6 class="m-b-0">John Deo</h6>
+                            <p class="text-muted m-b-0">Description</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 pad-0">
+                        <div class="row">
+                            <div class="col-sm-3">
+
+                            </div>
+                            <div class="col-sm-6">
+                                <img [src]="videoObj.picture"
+                                    style="width: 100%;">
+                            </div>
+                            <div class="col-sm-3">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+
+                                <div class="fields">
+                                    <div class="sub-tle">
+                                        Video Details
+                                    </div>
+                                    <br>
+                                    <div class="row">
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <div class="cus-label">
+                                                    <span>Title</span>
+                                                </div>
+                                                <input type="text" placeholder="" class="form-control"
+                                                    [(ngModel)]="videoObj.title">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <div class="cus-label">
+                                                    <span>Viewers Count
+                                                    </span>
+                                                </div>
+                                                <input type="text" placeholder="" class="form-control"
+                                                    [(ngModel)]="videoObj.viewers_count">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <div class="cus-label">
+                                                    <span>Payment</span>
+                                                </div>
+                                                <input type="text" placeholder="" class="form-control"
+                                                    [(ngModel)]="videoObj.payment">
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <div class="cus-label">
+                                                    <span>Start Time</span>
+                                                </div>
+                                                <input type="text" placeholder="" class="form-control"
+                                          [ngModel]="videoObj.starttime|date:'hh:mm:ss'">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <div class="cus-label">
+                                                    <span>Is Streaming
+                                                    </span>
+                                                </div>
+                                                <input type="text" placeholder="" class="form-control"
+                                                    [(ngModel)]="videoObj.is_streaming">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <div class="cus-label">
+                                                    <span>End Time
+                                                    </span>
+                                                </div>
+                                                <input type="text" placeholder="" class="form-control"
+                                                    [ngModel]="videoObj.endtime|date:'hh:mm:ss'">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <div class="cus-label">
+                                                    <span>Browser Name
+
+                                                    </span>
+                                                </div>
+                                                <input type="text" placeholder="" class="form-control"
+                                                    [(ngModel)]="videoObj.Browser_name">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <div class="cus-label">
+                                                    <span>Video Type
+
+
+                                                    </span>
+                                                </div>
+                                                <input type="text" placeholder="" class="form-control"
+                                                    [(ngModel)]="videoObj.video_title">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <div class="cus-label">
+                                                    <span>Created At
+
+                                                    </span>
+                                                </div>
+                                                <input type="text" placeholder="" class="form-control"
+                                                    [ngModel]="videoObj.created_at|date:'yyyy-MM-dd'">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <div class="cus-label">
+                                                    <span>Updated At
+                                                    </span>
+                                                </div>
+                                                <input type="text" placeholder="" class="form-control"
+                                                    [ngModel]="videoObj.updated_at|date:'yyyy-MM-dd'">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <div class="cus-label">
+                                                    <span>Description
+                                                    </span>
+                                                </div>
+                                                <textarea type="text" placeholder="" class="form-control"
+                                                    [(ngModel)]="videoObj.description"></textarea>
+                                            </div>
+                                        </div>
+                                       
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </app-card>
+    </div>
+</div>
