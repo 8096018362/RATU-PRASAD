@@ -84,11 +84,13 @@
                             <div class="col-6 pr-0">
                                 <h6 class="my-3"><span>Crowns Purchased</span><i
                                         class="feather icon-crown f-20 mr-2 text-primary"></i>{{revenueData[0]?.purchased_crowns?revenueData[0]?.purchased_crowns:0}}
-                                    $<span class="text-c-green ml-2 f-14"><i class="feather icon-arrow-up"></i>0%</span>
+                                    $<span class="text-c-green ml-2 f-14"><i
+                                            class="feather icon-arrow-up"></i>{{revenueData[0]?.purchased_crowns_percentage?revenueData[0]?.purchased_crowns_percentage:0}}%</span>
                                 </h6>
                                 <h6 class="my-3">Pearls earned <i
                                         class="feather icon-gift f-20 mr-2 text-success"></i>{{revenueData[0]?.pearl_count?revenueData[0]?.pearl_count:0}}
-                                    $<span class="text-c-red ml-2 f-14"><i class="feather icon-arrow-down"></i>0%</span>
+                                    $<span class="text-c-red ml-2 f-14"><i
+                                            class="feather icon-arrow-down"></i>{{revenueData[0]?.pearl_count_percentage?revenueData[0]?.pearl_count_percentage:0}}%</span>
                                 </h6>
                                 <h6 class="my-3">Bonus Crowns<i class="feather icon-money f-20 mr-2 text-danger"></i>0
                                     $<span class="text-c-green ml-2 f-14"><i class="feather icon-arrow-up"></i>0%</span>
