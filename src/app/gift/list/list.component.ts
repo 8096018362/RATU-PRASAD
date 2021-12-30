@@ -28,163 +28,8 @@ export class ListComponent implements OnInit {
         }
     }
 
-    giftTableOptions = {
-        dom: 'Bfrtip',
-        lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        ajax: (data, callback, settings) => {
-            const httpOptions = {
-                headers: new HttpHeaders({
-                    'Content-Type': 'application/json',
-                    'x-access-token': sessionStorage.getItem('userToken')
-                })
-            };
-            this.http.get(environment.API_URL + '/api/v1/gift/gift-list', httpOptions)
-                .pipe(
-                    map((this.formatJSONData))
-                ).subscribe((jsondata) => {
-                    callback({ aaData: jsondata == null ? [] : jsondata })
-                })
-        },
 
-        columns: [
-            {
-                title: 'Gift Name',
-                data: 'name'
-            },
-            {
-                title: 'Gift Utilization',
-                data: ''
-            },
-            {
-                title: 'Crown Value',
-                data: 'value',
-                render: (data, row, index) => {
-                    if (data != null) {
-                        return data;
-                    } else {
-                        return '-'
-                    }
-                }
-            },
-            {
-                title: 'Conversion Rate',
-                data: 'conversion_rate',
-                render: (data, row, index) => {
-                    if (data != null) {
-                        return data;
-                    } else {
-                        return '-'
-                    }
-                }
-            },
-            {
-                title: 'ICON',
-                data: 'icon',
-                render: (data, row, index) => {
-                    if (data != null) {
-                        return '<div class="media"><img class="rounded-circle" style="width:40px;" src="' + data + '" /></a> </div>';
-                    } else {
-                        return '-'
-                    }
-                }
-            },
-            {
-                title: 'IMAGE',
-                data: 'gf_img',
-                render: (data, row, index) => {
-                    if (data != null) {
-                        return '<div class="media"><img class="rounded-circle" style="width:40px;" src="' + data + '" /></a> </div>';
-                    } else {
-                        return '-'
-                    }
-                }
-            },
-            {
-                title: 'Status',
-                data: 'status',
-                render: (data, row, index) => {
-                    if (data != null) {
-                        return data
-                    } else {
-                        return '-'
-                    }
-                }
-            },
-            {
-                title: 'Created Date',
-                data: 'created_date',
-                render: (data, row, index) => {
-                    if (data != null) {
-                        const date = new Date(data)
-                        let dd: any = date.getDate();
-                        let mm: any = date.getMonth() + 1;
-                        const yyyy = date.getFullYear();
-                        if (dd < 10) { dd = '0' + dd }
-                        if (mm < 10) { mm = '0' + mm }
-                        return `${dd}-${mm}-${yyyy}`;
-                    } else {
-                        return '-'
-                    }
-                }
-            },
-
-            {
-                title: 'Modified Date',
-                data: 'modified_date',
-                render: (data, row, index) => {
-                    if (data != null) {
-                        const date = new Date(data)
-                        let dd: any = date.getDate();
-                        let mm: any = date.getMonth() + 1;
-                        const yyyy = date.getFullYear();
-                        if (dd < 10) { dd = '0' + dd }
-                        if (mm < 10) { mm = '0' + mm }
-                        return `${dd}-${mm}-${yyyy}`;
-                    } else {
-                        return '-'
-                    }
-                }
-            },
-            {
-                title: 'Action',
-                orderable: false,
-                className: 'editcenter',
-                render: (data, type, row, meta) => {
-                    return '<a class="badge badge-light-success badge-pill f-12 mr-2 actionBtn">Edit</a> <a class="badge badge-light-success badge-pill f-12  editor_view">Delete </a>'
-                }
-            }
-
-        ],
-
-        rowCallback: (row: Node, data: any | Object, index: number) => {
-            $('.actionBtn', row).bind('click', () => {
-                this.view(data);
-            });
-
-            $('.editor_view', row).bind('click', () => {
-                this.delete(data);
-            });
-
-        },
-        buttons: [
-           // { extend: 'colvis', text: 'More Columns', className: 'moreColumns', },
-        ],
-        // columnDefs: [
-
-        //     {
-        //         "targets": [7],
-        //         "visible": false,
-        //         "searchable": true
-        //     },
-        //     {
-        //         "targets": [6],
-        //         "visible": false,
-        //         "searchable": true
-        //     }
-        // ],
-
-    };
-
+    giftTableOptions: any;
     constructor(
         private http: HttpClient,
         public router: Router,
@@ -194,6 +39,169 @@ export class ListComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.initialCall();
+    }
+
+    initialCall() {
+        this.giftTableOptions = {
+            dom: 'Bfrtip',
+            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            ajax: (data, callback, settings) => {
+                const httpOptions = {
+                    headers: new HttpHeaders({
+                        'Content-Type': 'application/json',
+                        'x-access-token': sessionStorage.getItem('userToken')
+                    })
+                };
+                this.http.get(environment.API_URL + '/api/v1/gift/gift-list', httpOptions)
+                    .pipe(
+                        map((this.formatJSONData))
+                    ).subscribe((jsondata) => {
+                        callback({ aaData: jsondata == null ? [] : jsondata })
+                    })
+            },
+
+            columns: [
+                {
+                    title: 'Gift Name',
+                    data: 'name'
+                },
+                {
+                    title: 'Gift Utilization',
+                    data: 'name',
+                    render: () => {
+                        return '-'
+                    }
+                },
+                {
+                    title: 'Crown Value',
+                    data: 'value',
+                    render: (data, row, index) => {
+                        if (data != null) {
+                            return data;
+                        } else {
+                            return '-'
+                        }
+                    }
+                },
+                {
+                    title: 'Conversion Rate',
+                    data: 'conversion_rate',
+                    render: (data, row, index) => {
+                        if (data != null) {
+                            return data;
+                        } else {
+                            return '-'
+                        }
+                    }
+                },
+                {
+                    title: 'ICON',
+                    data: 'icon',
+                    render: (data, row, index) => {
+                        if (data != null) {
+                            return '<div class="media"><img class="rounded-circle" style="width:40px;" src="' + data + '" /></a> </div>';
+                        } else {
+                            return '-'
+                        }
+                    }
+                },
+                {
+                    title: 'IMAGE',
+                    data: 'gf_img',
+                    render: (data, row, index) => {
+                        if (data != null) {
+                            return '<div class="media"><img class="rounded-circle" style="width:40px;" src="' + data + '" /></a> </div>';
+                        } else {
+                            return '-'
+                        }
+                    }
+                },
+                {
+                    title: 'Status',
+                    data: 'status',
+                    render: (data, row, index) => {
+                        if (data != null) {
+                            return data
+                        } else {
+                            return '-'
+                        }
+                    }
+                },
+                {
+                    title: 'Created Date',
+                    data: 'created_date',
+                    render: (data, row, index) => {
+                        if (data != null) {
+                            const date = new Date(data)
+                            let dd: any = date.getDate();
+                            let mm: any = date.getMonth() + 1;
+                            const yyyy = date.getFullYear();
+                            if (dd < 10) { dd = '0' + dd }
+                            if (mm < 10) { mm = '0' + mm }
+                            return `${dd}-${mm}-${yyyy}`;
+                        } else {
+                            return '-'
+                        }
+                    }
+                },
+
+                {
+                    title: 'Modified Date',
+                    data: 'modified_date',
+                    render: (data, row, index) => {
+                        if (data != null) {
+                            const date = new Date(data)
+                            let dd: any = date.getDate();
+                            let mm: any = date.getMonth() + 1;
+                            const yyyy = date.getFullYear();
+                            if (dd < 10) { dd = '0' + dd }
+                            if (mm < 10) { mm = '0' + mm }
+                            return `${dd}-${mm}-${yyyy}`;
+                        } else {
+                            return '-'
+                        }
+                    }
+                },
+                {
+                    title: 'Action',
+                    orderable: false,
+                    className: 'editcenter',
+                    render: (data, type, row, meta) => {
+                        return '<a class="badge badge-light-success badge-pill f-12 mr-2 actionBtn">Edit</a> <a class="badge badge-light-success badge-pill f-12  editor_view">Delete </a>'
+                    }
+                }
+
+            ],
+
+            rowCallback: (row: Node, data: any | Object, index: number) => {
+                $('.actionBtn', row).bind('click', () => {
+                    this.view(data);
+                });
+
+                $('.editor_view', row).bind('click', () => {
+                    this.delete(data);
+                });
+
+            },
+            buttons: [
+                // { extend: 'colvis', text: 'More Columns', className: 'moreColumns', },
+            ],
+            // columnDefs: [
+
+            //     {
+            //         "targets": [7],
+            //         "visible": false,
+            //         "searchable": true
+            //     },
+            //     {
+            //         "targets": [6],
+            //         "visible": false,
+            //         "searchable": true
+            //     }
+            // ],
+
+        };
     }
 
     ngOnDestroy(): void {
@@ -208,7 +216,16 @@ export class ListComponent implements OnInit {
         dialog.afterClosed().subscribe(result => {
             if (result) {
                 this.api.deleteGift(obj.id).subscribe(response => {
+                    this.matSnackBar.open('Gift Deleted Successfully....', 'OK', {
+                        panelClass: 'snack-success',
+                        duration: 2000,
+                        verticalPosition: 'top'
+                    })
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 2000);
 
+                    //this.initialCall()
                 }, err => {
                     if (err.error.status == 401) {
                         this.matSnackBar.open('Session expired. Please Login again', 'OK', {
@@ -233,6 +250,7 @@ export class ListComponent implements OnInit {
 
 
     view(obj) {
+        sessionStorage.setItem('giftObj', JSON.stringify(obj))
         this.api.giftId = obj.id;
         const link = ['/gift/edit/' + obj.id];
         this.router.navigate(link);

@@ -29,7 +29,7 @@
                         </div>
                         <input type="text" placeholder="" formControlName="value" class="form-control" required>
                         <div class="error-msg" *ngIf="!form.get('value').valid  && formValidate">
-                            <span *ngIf="form.get('value').errors['required']">Please enter Gift Value</span>
+                            <span *ngIf="form.get('value').errors['required']">Please enter crown Value</span>
                         </div>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                         <div class="cus-label">
                             <span>Gift Added by</span>
                         </div>
-                        <input type="text" formControlName="added_by" placeholder="" class="form-control" readonly
+                        <input type="text" formControlName="added_by" placeholder={{addedBy}} class="form-control" readonly
                             required>
 
                     </div>

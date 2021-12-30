@@ -6,7 +6,7 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row">   
+                        <div class="row">
                             <div class="col-auto">
                                 <h6>Total Streamers</h6>
                             </div>
@@ -83,11 +83,11 @@
                         <div class="row">
                             <div class="col-6 pr-0">
                                 <h6 class="my-3"><span>Crowns Purchased</span><i
-                                        class="feather icon-crown f-20 mr-2 text-primary"></i>{{revenueData[0].purchased_crowns}}
+                                        class="feather icon-crown f-20 mr-2 text-primary"></i>{{revenueData[0]?.purchased_crowns?revenueData[0]?.purchased_crowns:0}}
                                     $<span class="text-c-green ml-2 f-14"><i class="feather icon-arrow-up"></i>0%</span>
                                 </h6>
                                 <h6 class="my-3">Pearls earned <i
-                                        class="feather icon-gift f-20 mr-2 text-success"></i>{{revenueData[0].pearl_count}}
+                                        class="feather icon-gift f-20 mr-2 text-success"></i>{{revenueData[0]?.pearl_count?revenueData[0]?.pearl_count:0}}
                                     $<span class="text-c-red ml-2 f-14"><i class="feather icon-arrow-down"></i>0%</span>
                                 </h6>
                                 <h6 class="my-3">Bonus Crowns<i class="feather icon-money f-20 mr-2 text-danger"></i>0
@@ -349,7 +349,7 @@
                                             class="img-fluid wid-30"></td> -->
                                             <td>{{streamer.country}}</td>
                                             <td>{{streamer.streamer}}</td>
-                                            <td class="text-right">0%</td>
+                                            <td class="text-right">{{streamer.average.toFixed(2)}}%</td>
                                         </tr>
 
                                     </tbody>
@@ -400,13 +400,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr *ngFor="let streamer of viewerLocationList">
+                                        <tr *ngFor="let viewer of viewerLocationList">
                                             <!-- <td>
                                                 <img src="assets/images/widget/GERMANY.jpg" alt 
                                                 class="img-fluid wid-30"></td> -->
-                                            <td>{{streamer.country}}</td>
-                                            <td>{{streamer.streamer}}</td>
-                                            <td class="text-right">0%</td>
+                                            <td>{{viewer.country}}</td>
+                                            <td>{{viewer.streamer}}</td>
+                                            <td class="text-right">{{viewer.average.toFixed(2)}}%</td>
                                         </tr>
 
                                     </tbody>

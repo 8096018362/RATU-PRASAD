@@ -28,7 +28,7 @@ export class ApiService {
         'x-access-token': sessionStorage.getItem('userToken')
       })
     };
-    return this.http.put(API_URL + '/gifts/update/' + id, {}, httpOptions);
+    return this.http.get(API_URL + '/api/v1/gift/delete-gift/' + id, httpOptions);
   }
 
   updateGift(request: any, id: string): Observable<any> {
@@ -38,7 +38,7 @@ export class ApiService {
         'x-access-token': sessionStorage.getItem('userToken')
       })
     };
-    return this.http.put(API_URL + '/gifts/update/' + id, request, httpOptions);
+    return this.http.post(API_URL + '/api/v1/gift/edit-gift', request, httpOptions);
   }
 
   getCrownsList(request?: any): Observable<any> {

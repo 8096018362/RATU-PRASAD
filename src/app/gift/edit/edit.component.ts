@@ -23,6 +23,7 @@ export class EditComponent implements OnInit, OnDestroy {
   showError = false;
   gifName = '';
   iconName = '';
+  addedBy = '';
   @ViewChild(FormGroupDirective) formDirective: FormGroupDirective;
   constructor(
     private fb: FormBuilder,
@@ -38,26 +39,39 @@ export class EditComponent implements OnInit, OnDestroy {
       id: ['', Validators.required],
       value: ['', Validators.required],
       type: ['', Validators.required],
-      added_by: ['', Validators.required],
+      added_by: [''],
       conversion_rate: ['', Validators.required],
       remarks: ['', Validators.required]
     });
 
-    let added_by = JSON.parse(sessionStorage.getItem('loginUsername')).number
-
+    let added_by = JSON.parse(sessionStorage.getItem('loginUsername'))
+    this.addedBy = added_by;
     this.form.controls['added_by'].setValue(added_by)
+
 
     if (this.api.giftId) {
       this.showLoading = true;
-      this.api.getGiftById(this.api.giftId).pipe(takeWhile(() => this.componentActive))
-        .subscribe((response: any) => {
-          this.form.patchValue(response[0]);
-          this.showLoading = false;
-          this.gif_img = response[0].gif_img;
-          this.icon = response[0].icon;
-          this.gifName = response[0].gif_img;
-          this.iconName = response[0].icon;
-        });
+      let giftObj = JSON.parse(sessionStorage.getItem('giftObj'));
+      console.log(giftObj)
+      this.form.patchValue(giftObj);
+      this.showLoading = false;
+
+
+      this.gif_img = giftObj.gf_img;
+      this.icon = giftObj.icon;
+      this.gifName = giftObj.gf_img;
+      this.iconName = giftObj.icon;
+      this.form.controls['added_by'].setValue(giftObj.added_by)
+
+      // this.api.getGiftById(this.api.giftId).pipe(takeWhile(() => this.componentActive))
+      //   .subscribe((response: any) => {
+      //     this.form.patchValue(response[0]);
+      //     this.showLoading = false;
+      //     this.gif_img = response[0].gif_img;
+      //     this.icon = response[0].icon;
+      //     this.gifName = response[0].gif_img;
+      //     this.iconName = response[0].icon;
+      //   });
     } else {
       const link = ['/gift/view'];
       this.router.navigate(link);
@@ -65,6 +79,7 @@ export class EditComponent implements OnInit, OnDestroy {
 
 
   }
+
 
   clearForm() {
 
@@ -112,59 +127,68 @@ export class EditComponent implements OnInit, OnDestroy {
   save(): void {
     this.formValidate = true;
 
-    if (this.form.valid && this.gif_img && this.icon) {
-      this.showError = false;
-      this.showLoading = true;
-      const data = this.form.getRawValue();
+    // if (this.form.valid && this.gif_img && this.icon) {
+    this.showError = false;
+    this.showLoading = true;
+    const data = this.form.getRawValue();
 
-      const request = {
-        name: data.name,
-        value: data.value,
-        status: data.status,
-        type: data.type,
-        added_by: data.added_by,
-        conversion_rate: data.conversion_rate,
-        remarks: data.remarks,
-        icon: this.icon,
-        gif_img: this.gif_img
+    const request = {
+      // name: data.name,
+      // value: data.value,
+      // status: data.status,
+      // type: data.type,
+      // added_by: data.added_by,
+      // conversion_rate: data.conversion_rate,
+      // remarks: data.remarks,
+      // icon: this.icon,
+      // gif_img: this.gif_img
 
-      };
+      "added_by": this.addedBy,
+      "conversion_rate": data.value,
+      "gif_img": this.gif_img,
+      "icon": this.icon,
+      "name": data.name,
+      "remarks": data.remarks,
+      "status": data.status,
+      "id": data.id
+
+    };
 
 
 
-      this.api.updateGift(request, this.api.giftId).pipe(takeWhile(() => this.componentActive)).subscribe(response => {
-        this.showLoading = false;
-        if (response.gift == 'gift updated Successfully') {
-          swal("Successful!", "Gift information saved!", "success").then((result) => {
-            if (result) {
-              const link = ['/gift/view'];
-              this.router.navigate(link);
-            }
-          });
-        } else {
+    this.api.updateGift(request, this.api.giftId).pipe(takeWhile(() => this.componentActive)).subscribe(response => {
+      this.showLoading = false;
+      if (response.success) {
+        swal("Successful!", "Gift information saved!", "success").then((result) => {
+          if (result) {
+            const link = ['/gift/view'];
+            this.router.navigate(link);
+          }
+        });
+      } else {
 
-        }
+      }
 
-      }, err => {
-        if (err.error.status == 401) {
-          this.matSnackBar.open('Session expired. Please Login again', 'OK', {
-            panelClass: 'snack-error',
-            duration: 2000,
-            verticalPosition: 'top'
-          })
-          sessionStorage.clear()
-          const link = ['/auth/signin'];
-          this.router.navigate(link);
-        } else {
-          this.matSnackBar.open(err.error.err, 'OK', {
-            panelClass: 'snack-error',
-            duration: 2000,
-            verticalPosition: 'top'
-          })
-        }
-      });
-    }
+    }, err => {
+      if (err.error.status == 401) {
+        this.matSnackBar.open('Session expired. Please Login again', 'OK', {
+          panelClass: 'snack-error',
+          duration: 2000,
+          verticalPosition: 'top'
+        })
+        sessionStorage.clear()
+        const link = ['/auth/signin'];
+        this.router.navigate(link);
+      } else {
+        this.matSnackBar.open(err.error.err, 'OK', {
+          panelClass: 'snack-error',
+          duration: 2000,
+          verticalPosition: 'top'
+        })
+      }
+    });
   }
+
 
 }
 
