@@ -219,7 +219,7 @@ export class ApiService {
         'x-access-token': sessionStorage.getItem('userToken')
       })
     };
-    return this.http.get(API_URL + '/api/v1/admin/secure/dashboard', httpOptions);
+    return this.http.get(API_URL + '/api/v1/dashboard/top-streamer', httpOptions);
   }
 
 
