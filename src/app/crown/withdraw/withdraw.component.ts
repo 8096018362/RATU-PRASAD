@@ -30,7 +30,7 @@ export class WithdrawComponent implements OnInit {
   getTurnoverReport() {
     this.appService.getTurnoverReport().subscribe((res: any) => {
 
-      this.turnOverReport = res.data;
+      //this.turnOverReport = res.data;
     })
   }
 

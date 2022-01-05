@@ -80,13 +80,13 @@ export class StreamerComponent implements OnInit {
           return data ? data : '-'
         }
       },
-      // {
-      //   title: 'STREAMER PEARLS EARNED (PEARLS & RM)',
-      //   data: 'perals_earnecd',
-      //   // render: (data, row, index) => {
-      //   //   return `5000 Pears | 20 RM`
-      //   // }
-      // },
+      {
+        title: 'STREAMER PEARLS EARNED (PEARLS & RM)',
+        data: 'perals_earnecd',
+        // render: (data, row, index) => {
+        //   return `5000 Pears | 20 RM`
+        // }
+      },
       // {
       //   title: 'AGENT PEARLS EARNED (PEARLS & RM)',
       //   data: 'status',
