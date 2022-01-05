@@ -169,11 +169,12 @@
                                     <tbody>
                                         <tr *ngFor="let topStrmer of topStreamersList">
                                             <td>
-                                                <img class="rounded-circle" style="width:40px;"
-                                                    src="assets/images/default-user.png" alt="activity-user"> Raju
+                                                <!-- <img class="rounded-circle" style="width:40px;"
+                                                    src="assets/images/default-user.png" alt="activity-user">  -->
+                                                {{topStrmer.name}}
                                             </td>
                                             <td>
-                                                <h6 class="mb-1">250</h6>
+                                                <h6 class="mb-1">{{topStrmer.crownspurchased}}</h6>
                                             </td>
                                             <td>
                                                 <p class="mb-1">1250</p>

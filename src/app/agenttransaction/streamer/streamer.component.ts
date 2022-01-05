@@ -42,7 +42,7 @@ export class StreamerComponent implements OnInit {
 
       {
         title: 'Date',
-        data: 'last_date',
+        data: 'date',
         render: (data, row, index) => {
           if (data != null) {
             const date = new Date(data)
@@ -61,32 +61,32 @@ export class StreamerComponent implements OnInit {
       },
       {
         title: 'STREAMER ID',
-        data: 'created_date',
+        data: 'streamerId',
         render: (data, row, index) => {
-          return `124565`
+          return data ? data : '-'
         }
       },
       {
         title: 'STREAMER',
-        data: 'user_name',
+        data: 'streamername',
         render: (data, row, index) => {
-          // return data['name']
+          return data ? data : '-'
         }
       },
       {
         title: 'TOTAL LIVE SESSIONS',
-        data: 'status',
+        data: 'total_Live_Session',
         render: (data, row, index) => {
-          return `3`
+          return data ? data : '-'
         }
       },
-      {
-        title: 'STREAMER PEARLS EARNED (PEARLS & RM)',
-        data: 'perals_earnecd',
-        // render: (data, row, index) => {
-        //   return `5000 Pears | 20 RM`
-        // }
-      },
+      // {
+      //   title: 'STREAMER PEARLS EARNED (PEARLS & RM)',
+      //   data: 'perals_earnecd',
+      //   // render: (data, row, index) => {
+      //   //   return `5000 Pears | 20 RM`
+      //   // }
+      // },
       // {
       //   title: 'AGENT PEARLS EARNED (PEARLS & RM)',
       //   data: 'status',
@@ -96,17 +96,17 @@ export class StreamerComponent implements OnInit {
       // }
     ],
     columnDefs: [
-      {
-          "targets": [4],
-          "visible": false,
-          "searchable": true
-      },
-      {
-          "targets": [5],
-          "visible": false,
-          "searchable": true
-      }
-  ],
+      // {
+      //   "targets": [4],
+      //   "visible": false,
+      //   "searchable": true
+      // },
+      // {
+      //   "targets": [5],
+      //   "visible": false,
+      //   "searchable": true
+      // }
+    ],
     buttons: [
       // 'excel',
       // 'csv'
